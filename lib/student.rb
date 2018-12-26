@@ -3,7 +3,7 @@ require_relative "../config/environment.rb"
 class Student
   attr_accessor :name, :grade, :id
 
-  def initialize(name, grade, id = nil)
+  def initialize(id = nil, name, grade)
     @id = id
     @name = name
     @grade = grade
@@ -40,6 +40,16 @@ class Student
     student = Student.new(name, grade)
     student.save
     student
+  end
+
+  def self.new_from_db(name)
+    sql = <<-SQL
+      SELECT *
+      FROM students
+      WHERE students.name = ?
+    SQL
+
+    DB[:conn].execute(sql, name).map {|d| Student.new(d[])}
   end
 
 end
