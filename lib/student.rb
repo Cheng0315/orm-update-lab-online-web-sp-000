@@ -49,7 +49,7 @@ class Student
       WHERE students.name = ?
     SQL
 
-    DB[:conn].execute(sql, name).map {|d| Student.new(d[])}
+    DB[:conn].execute(sql, name).map {|d| Student.new(d[0], d[1], d[2])}.first
   end
 
 end
