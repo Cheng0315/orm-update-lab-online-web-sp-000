@@ -3,7 +3,7 @@ require_relative "../config/environment.rb"
 class Student
   attr_accessor :name, :grade, :id
 
-  def initialize(id = nil, name, grade)
+  def initialize(name, grade, id = nil)
     @id = id
     @name = name
     @grade = grade
@@ -50,7 +50,7 @@ class Student
       LIMIT 1
     SQL
 
-    DB[:conn].execute(sql, name).map {|d| Student.new(d[0][0], d[0][1], d[0][2])}.first
+    DB[:conn].execute(sql, name).map {|d| Student.new(d[0][0], d[0][1])}.first
   end
 
 end
