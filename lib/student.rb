@@ -21,8 +21,8 @@ class Student
     DB[:conn].execute(sql)
   end
 
-  def self.drop_table(table)
-    DB[:conn].execute("DROP TABLE ?", table)
+  def self.drop_table
+    DB[:conn].execute("DROP TABLE students")
   end
 
 end
