@@ -47,7 +47,6 @@ class Student
       SELECT *
       FROM students
       WHERE students.name = ?
-      LIMIT 1
     SQL
 
     DB[:conn].execute(sql, name)
