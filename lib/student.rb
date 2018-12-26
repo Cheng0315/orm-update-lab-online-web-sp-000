@@ -50,7 +50,7 @@ class Student
       LIMIT 1
     SQL
 
-    DB[:conn].execute(sql, name).map {|d| Student.new(d[0][0], d[0][1])}.first
+    DB[:conn].execute(sql, name).map {|d| Student.new}.first
   end
 
 end
