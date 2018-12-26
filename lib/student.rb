@@ -47,6 +47,7 @@ class Student
       SELECT *
       FROM students
       WHERE students.name = ?
+      LIMIT 1
     SQL
 
     DB[:conn].execute(sql, name).map {|d| Student.new(d[0], d[1], d[2])}.first
